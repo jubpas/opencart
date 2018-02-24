@@ -1,0 +1,98 @@
+<modification>
+    <name>TOC Free Extension</name>
+    <version>1.00</version>
+	<code>TocFree300</code>
+    <author>TemplateOpencart.net</author>
+    <link>TemplateOpencart.net</link> 
+	<file path="admin/controller/common/column_left.php"> 
+        <operation>
+            <search><![CDATA[
+                $catalog = array();
+            ]]></search>
+            <add position="after"><![CDATA[	
+			     //////// ocmod ////////
+				 $this->load->language('extension/module/tocexlang'); 
+				 $data['text_tocmenu'] = 'TemplateOpencart.net'; 
+				 $data['text_toctotal'] = $this->language->get('text_toctotal');
+				 $data['text_tocskin'] = $this->language->get('text_tocskin');
+				 $data['text_tocshipping'] = $this->language->get('text_tocshipping');
+				 $data['text_payment_notice'] = $this->language->get('text_payment_notice');
+				 $data['text_payment'] = $this->language->get('text_payment');
+				 $data['text_addbank'] = $this->language->get('text_addbank');
+				 $data['totaltoc'] = $this->url->link('extension/extension/toctotal', 'user_token=' . $this->session->data['user_token'], true);
+				 $data['shippingtoc'] = $this->url->link('extension/extension/tocshipping', 'user_token=' . $this->session->data['user_token'],  true);
+				 $data['paymenttoc'] = $this->url->link('extension/extension/tocpayment', 'user_token=' . $this->session->data['user_token'],  true);
+				 $data['tocskin'] = $this->url->link('extension/module/doproocskin', 'user_token=' . $this->session->data['user_token'],  true);
+				 $data['payment_notice'] = $this->url->link('catalog/toc_payment', 'user_token=' . $this->session->data['user_token'],  true);
+				 $data['ex_add_bank'] = $this->url->link('catalog/bankaccount', 'user_token=' . $this->session->data['user_token'],  true);
+				 //////// ocmod ////////
+            ]]></add>
+        </operation>
+   </file>  
+   <file path="admin/view/template/common/column_left.twig"> 
+        <operation>
+            <search><![CDATA[
+                 <ul id="menu">
+            ]]></search>
+            <add position="after"   ><![CDATA[	 
+				  <li class="tocmenu"  ><a  href="#tocmenu"   data-toggle="collapse"   class="parent collapsed"><i class="fa fa-tags fa-fw"></i> <span>{{  text_tocmenu }}</span></a>
+					<ul id="tocmenu"><li><a href="{{  tocskin }} " > {{  text_tocskin }}</a></li>  
+					       <li><a href="{{  ex_add_bank }} ">{{  text_addbank }}</a></li> 
+						   <li><a href="{{  totaltoc }}"  >{{  text_toctotal }}</a></li> 
+						   <li><a href="{{  shippingtoc}} " > {{  text_tocshipping }}</a></li>  
+						   <li><a href="{{  paymenttoc }}"> {{  text_tocpayment }}</a></li> 
+						   <li><a href="{{  payment_notice }}"> {{  text_payment_notice }}</a></li> 
+					</ul>
+				  </li>
+            ]]></add>
+        </operation>
+    </file>
+    <file path="catalog/view/theme/default/template/common/header.twig">
+		<operation>
+			<search ><![CDATA[
+                         </head>
+		   ]]></search>
+			<add position="before" ><![CDATA[
+			         {% if  not skinname =='' %}
+			           <link href="catalog/view/theme/doproocskin/stylesheet/{{ skinname }}.css" rel="stylesheet">
+					 {%  endif %}
+					   {% if  not  custom_css =='' %}
+			            <style type ="text/css" >{{ custom_css }}</style>
+				   {%  endif  %}
+			]]></add>
+		</operation>
+		<operation>
+			<search ><![CDATA[
+                         <body>
+		   ]]></search>
+			<add position="after" ><![CDATA[
+			         {% if  not skinname =='' %}
+			             <main  {% if  inboxed=='1' %}   class="inbox-wrap"   {%  endif  %}  >
+			         {%  endif  %}
+			]]></add>
+		</operation>
+    </file>   
+     <file path="catalog/controller/common/header.php">
+        <operation>
+            <search><![CDATA[
+                  $this->load->language('common/header');
+            ]]></search>
+            <add position="after"><![CDATA[	
+				    $this->load->model('catalog/doproocskin');
+					$result = $this->model_catalog_doproocskin->load_skin();
+					if (!empty($result['skinname'])) {
+				      $data['skinname'] = $result['skinname'] ;
+					  $data['inboxed'] = $result['inbox'] ;
+					  $data['custom_css'] = $result['custom_css'] ;
+					}else {
+					  $data['custom_css'] = '';
+				      $data['skinname'] = '';
+					  $data['inboxed']   = 0;
+					}
+            ]]></add>
+        </operation>
+    </file>  
+	
+</modification>
+
+ 
