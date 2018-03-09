@@ -23,16 +23,14 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
       </div>
     {% endif %}
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-exchange"></i> {{ heading_title }}</h3>
-      </div>
-      <div class="panel-body">
-        <form class="form-horizontal">
+    <div class="card">
+      <div class="card-header"><i class="fa fa-exchange"></i> {{ heading_title }}</div>
+      <div class="card-body">
+        <form>
           <fieldset>
             <legend>{{ text_progress }}</legend>
             <div class="form-group">
-              <label class="col-sm-2 control-label">{{ entry_progress }}</label>
+              <label class="col-sm-2 col-form-label">{{ entry_progress }}</label>
               <div class="col-sm-10">
                 <div id="progress-backup" class="progress">
                   <div id="progress-bar" class="progress-bar"></div>
@@ -44,7 +42,7 @@
           <fieldset>
             <legend>{{ text_option }}</legend>
             <div class="form-group">
-              <label class="col-sm-2 control-label">{{ entry_export }}</label>
+              <label class="col-sm-2 col-form-label">{{ entry_export }}</label>
               <div class="col-sm-10">
                 <div class="well well-sm" style="height: 150px; overflow: auto;">
                   {% for table in tables %}
@@ -111,7 +109,7 @@ function backup(url) {
 
 			if (json['error']) {
 				$('#progress-bar').addClass('progress-bar-danger');
-				$('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
+				$('#progress-text').html('<div class="invalid-tooltip">' + json['error'] + '</div>');
 
 				$('#history').load('index.php?route=tool/backup/history&user_token={{ user_token }}');
 
@@ -172,7 +170,7 @@ function restore(url, element) {
 
 			if (json['error']) {
 				$('#progress-bar').addClass('progress-bar-danger');
-				$('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
+				$('#progress-text').html('<div class="invalid-tooltip">' + json['error'] + '</div>');
 
 				$('#history').load('index.php?route=tool/backup/history&user_token={{ user_token }}');
 

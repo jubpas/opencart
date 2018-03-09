@@ -19,20 +19,18 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
       </div>
     {% endif %}
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_form }}</h3>
-      </div>
-      <div class="panel-body">
-        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-layout" class="form-horizontal">
+    <div class="card">
+      <div class="card-header"><i class="fa fa-pencil"></i> {{ text_form }}</div>
+      <div class="card-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-layout">
           <fieldset>
             <legend>{{ text_route }}</legend>
             <div class="form-group required">
-              <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+              <label class="col-sm-2 col-form-label" for="input-name">{{ entry_name }}</label>
               <div class="col-sm-10">
                 <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control"/>
                 {% if error_name %}
-                  <div class="text-danger">{{ error_name }}</div>
+                  <div class="invalid-tooltip">{{ error_name }}</div>
                 {% endif %}
               </div>
             </div>

@@ -22,12 +22,10 @@
       </div>
     {% endif %}
     <div class="panel-group" id="collapse">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><a href="#collapse-version" data-toggle="collapse" data-parent="#collapse"><i class="fa fa-refresh"></i> {{ text_version }}</a></h3>
-        </div>
+      <div class="card">
+        <div class="card-header"><a href="#collapse-version" data-toggle="collapse" data-parent="#collapse"><i class="fa fa-refresh"></i> {{ text_version }}</a></div>
         <div id="collapse-version" class="panel-collapse collapse in">
-          <div class="panel-body">
+          <div class="card-body">
             <fieldset>
               {% if error_warning %}
               <legend class="text-danger" id="btn-version">{{ text_update }}</legend>
@@ -54,12 +52,10 @@
           </div>
         </div>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><a href="#collapse-compatible" data-toggle="collapse" data-parent="#collapse"><i class="fa fa-random"></i> {{ text_compatibility }}</a></h3>
-        </div>
+      <div class="card">
+        <div class="card-header"><a href="#collapse-compatible" data-toggle="collapse" data-parent="#collapse"><i class="fa fa-random"></i> {{ text_compatibility }}</a></div>
         <div id="collapse-compatible" class="panel-collapse collapse">
-          <div class="panel-body">
+          <div class="card-body">
            <div class="alert alert-warning">
               Before upgrading, it's very important to check the extensions installed are compatible with the latest version!
               <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -94,16 +90,14 @@
           </div>
         </div>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title"><a href="#collapse-upgrade" data-toggle="collapse" data-parent="#collapse"><i class="fa fa-check"></i> {{ text_upgrade }}</a></h3>
-        </div>
+      <div class="card">
+        <div class="card-header"><a href="#collapse-upgrade" data-toggle="collapse" data-parent="#collapse"><i class="fa fa-check"></i> {{ text_upgrade }}</a></div>
         <div id="collapse-upgrade" class="panel-collapse collapse">
-          <div class="panel-body">
+          <div class="card-body">
             <fieldset>
               <legend>{{ text_progress }}</legend>
               <div class="form-group">
-                <label class="col-sm-2 control-label">Progress</label>
+                <label class="col-sm-2 col-form-label">Progress</label>
                 <div class="col-sm-10">
                   <div id="progress-download" class="progress">
                     <div id="progress-bar" class="progress-bar"></div>
@@ -147,7 +141,7 @@ $('#button-upgrade').on('click', function() {
 		success: function(json) {
 			if (json['error']) {
 				$('#progress-bar').addClass('progress-bar-danger');
-				$('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
+				$('#progress-text').html('<div class="invalid-tooltip">' + json['error'] + '</div>');
 				$('#log').append(json['error'] + "\n");
 			}
 
@@ -178,7 +172,7 @@ function next(url, i) {
 
 			if (json['error']) {
 				$('#progress-bar').addClass('progress-bar-danger');
-				$('#progress-text').html('<div class="text-danger">' + json['error'] + '</div>');
+				$('#progress-text').html('<div class="invalid-tooltip">' + json['error'] + '</div>');
 				$('#log').append(json['error'] + "\n");
 
 				$('#button-upgrade').button('reset');
