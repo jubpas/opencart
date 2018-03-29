@@ -32,10 +32,10 @@
         <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-payment">
           <ul class="nav nav-tabs">
             {% if show_register %}
-              <li class="active" id="li-tab-register"><a href="#tab-register" data-toggle="tab">{{ tab_register }}</a></li>
-              <li class="nav-item" id="li-tab-settings"><a href="#tab-settings" data-toggle="tab">{{ tab_settings }}</a></li>
+              <li class="nav-item" id="li-tab-register"><a href="#tab-register" data-toggle="tab" class="nav-link active">{{ tab_register }}</a></li>
+              <li class="nav-item" id="li-tab-settings"><a href="#tab-settings" data-toggle="tab" class="nav-link">{{ tab_settings }}</a></li>
             {% else %}
-              <li class="active" id="li-tab-settings"><a href="#tab-settings" data-toggle="tab">{{ tab_settings }}</a></li>
+              <li class="active" id="li-tab-settings"><a href="#tab-settings" data-toggle="tab" class="nav-link">{{ tab_settings }}</a></li>
             {% endif %}
           </ul>
           <div class="tab-content">
@@ -91,7 +91,10 @@
                   <small class="form-text text-muted">{{ help_country }}</small>
                 </div>
               </div>
-              <a class="button btn btn-primary col-sm-offset-2" id="button-register">{{ button_register }}</a> <span class="btn btn-primary col-sm-offset-2" id="img_loading_register" style="display:none"><i class="fa fa-circle-o-notch fa-spin fa-lg"></i></span>
+              <div class="offset-sm-2">
+                <a class="button btn btn-primary" id="button-register">{{ button_register }}</a>
+                <span class="btn btn-primary" id="img_loading_register" style="display: none;"><i class="fa fa-circle-o-notch fa-spin fa-lg"></i></span>
+              </div>
             </div>
             <div class="tab-pane {% if not show_register %} active {% endif %}" id="tab-settings">
               {% if error_weight %}

@@ -62,7 +62,7 @@
               <label class="col-form-label" for="input-date-added">{{ entry_date_added }}</label>
               <div class="input-group date">
                 <input type="text" name="filter_date_added" value="{{ filter_date_added }}" placeholder="{{ entry_date_added }}" data-date-format="YYYY-MM-DD" data-locale="{{ datepicker }}" id="input-date-added" class="form-control"/>
-                <div class="input-group-btn">
+                <div class="input-group-append">
                   <button type="button" class="btn btn-light"><i class="fa fa-calendar"></i></button>
                 </div>
               </div>
@@ -71,7 +71,7 @@
               <label class="col-form-label" for="input-date-modified">{{ entry_date_modified }}</label>
               <div class="input-group date">
                 <input type="text" name="filter_date_modified" value="{{ filter_date_modified }}" placeholder="{{ entry_date_modified }}" data-date-format="YYYY-MM-DD" data-locale="{{ datepicker }}" id="input-date-modified" class="form-control"/>
-                <div class="input-group-btn">
+                <div class="input-group-append">
                   <button type="button" class="btn btn-light"><i class="fa fa-calendar"></i></button>
                 </div>
               </div>
@@ -118,13 +118,11 @@
                           <td class="text-left">{{ order.date_added }}</td>
                           <td class="text-left">{{ order.date_modified }}</td>
                           <td class="text-right">
-                            <div style="min-width: 120px;">
-                              <div class="btn-group"><a href="{{ order.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="caret"></span></button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                  <li><a href="{{ order.edit }}"><i class="fa fa-pencil"></i> {{ button_edit }}</a></li>
-                                  <li><a href="{{ order.order_id }}"><i class="fa fa-trash-o"></i> {{ button_delete }}</a></li>
-                                </ul>
+                            <div class="btn-group">
+                              <a href="{{ order.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                              <button type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split"><span class="caret"></span></button>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="{{ order.edit }}" class="dropdown-item"><i class="fa fa-pencil"></i> {{ button_edit }}</a> <a href="{{ order.order_id }}" class="dropdown-item"><i class="fa fa-trash-o"></i> {{ button_delete }}</a>
                               </div>
                             </div>
                           </td>

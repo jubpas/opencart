@@ -26,10 +26,10 @@
         <div class="alert alert-warning"><i class="fa fa-exclamation-circle"></i> {{ text_ip_message }}</div>
         <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-payment">
           <ul class="nav nav-tabs" id="tabs">
-            <li class="active"><a href="#tab-api" data-toggle="tab">{{ tab_api }}</a></li>
-            <li class="nav-item"><a href="#tab-account" data-toggle="tab">{{ tab_account }}</a></li>
-            <li class="nav-item"><a href="#tab-order-status" data-toggle="tab">{{ tab_order_status }}</a></li>
-            <li class="nav-item"><a href="#tab-payment" data-toggle="tab">{{ tab_payment }}</a></li>
+            <li class="nav-item"><a href="#tab-api" data-toggle="tab" class="nav-link active">{{ tab_api }}</a></li>
+            <li class="nav-item"><a href="#tab-account" data-toggle="tab" class="nav-link">{{ tab_account }}</a></li>
+            <li class="nav-item"><a href="#tab-order-status" data-toggle="tab" class="nav-link">{{ tab_order_status }}</a></li>
+            <li class="nav-item"><a href="#tab-payment" data-toggle="tab" class="nav-link">{{ tab_payment }}</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-api">
@@ -39,7 +39,7 @@
                   <input type="text" name="payment_globalpay_remote_merchant_id" value="{{ payment_globalpay_remote_merchant_id }}" placeholder="{{ entry_merchant_id }}" id="input-merchant-id" class="form-control"/>
                   {% if error_merchant_id %}
                     <div class="invalid-tooltip">{{ error_merchant_id }}</div>
-                  {% endif %} </div>
+                  {% endif %}</div>
               </div>
               <div class="form-group row required">
                 <label class="col-sm-2 col-form-label" for="input-secret">{{ entry_secret }}</label>
@@ -47,7 +47,7 @@
                   <input type="password" name="payment_globalpay_remote_secret" value="{{ payment_globalpay_remote_secret }}" placeholder="{{ entry_secret }}" id="input-secret" class="form-control"/>
                   {% if error_secret %}
                     <div class="invalid-tooltip">{{ error_secret }}</div>
-                  {% endif %} </div>
+                  {% endif %}</div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="input-secret">{{ entry_rebate_password }}</label>
@@ -115,7 +115,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="input-total">{{ entry_total }}></label>
+                <label class="col-sm-2 col-form-label" for="input-total">{{ entry_total }}</label>
                 <div class="col-sm-10">
                   <input type="text" name="payment_globalpay_remote_total" value="{{ payment_globalpay_remote_total }}" placeholder="{{ entry_total }}" id="input-total" class="form-control"/>
                   <small class="form-text text-muted">{{ help_total }}</small>
@@ -302,51 +302,45 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="input-tss-check">{{ entry_tss_check }}</label>
+                <label class="col-sm-2 col-form-label">{{ entry_tss_check }}</label>
                 <div class="col-sm-10">
-                  <select name="payment_globalpay_remote_tss_check" id="input-tss-check" class="form-control">
-
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     {% if payment_globalpay_remote_tss_check %}
-
-                      <option value="1" selected="selected">{{ text_yes }}</option>
-                      <option value="0">{{ text_no }}</option>
-
+                      <label class="btn btn-success active"><input type="radio" name="payment_globalpay_remote_tss_check" value="1" checked="checked"/> {{ text_yes }}</label>
+                      <label class="btn btn-danger"><input type="radio" name="payment_globalpay_remote_tss_check" value="0"/> {{ text_no }}</label>
                     {% else %}
-
-                      <option value="1">{{ text_yes }}</option>
-                      <option value="0" selected="selected">{{ text_no }}</option>
-
+                      <label class="btn btn-success"><input type="radio" name="payment_globalpay_remote_tss_check" value="1"/> {{ text_yes }}</label>
+                      <label class="btn btn-danger active"><input type="radio" name="payment_globalpay_remote_tss_check" value="0" checked="checked"/> {{ text_no }}</label>
                     {% endif %}
-
-                  </select>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="input-3d">{{ entry_3d }}</label>
                 <div class="col-sm-10">
-                  <select name="payment_globalpay_remote_3d" id="input-3d" class="form-control">
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     {% if payment_globalpay_remote_3d %}
-                      <option value="1" selected="selected">{{ text_yes }}</option>
-                      <option value="0">{{ text_no }}</option>
+                      <label class="btn btn-success active"><input type="radio" name="payment_globalpay_remote_3d" value="1" checked="checked"/> {{ text_yes }}</label>
+                      <label class="btn btn-danger"><input type="radio" name="payment_globalpay_remote_3d" value="0"/> {{ text_no }}</label>
                     {% else %}
-                      <option value="1">{{ text_yes }}</option>
-                      <option value="0" selected="selected">{{ text_no }}</option>
+                      <label class="btn btn-success"><input type="radio" name="payment_globalpay_remote_3d" value="1"/> {{ text_yes }}</label>
+                      <label class="btn btn-danger active"><input type="radio" name="payment_globalpay_remote_3d" value="0" checked="checked"/> {{ text_no }}</label>
                     {% endif %}
-                  </select>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-sm-2 col-form-label" for="input-liability">{{ entry_liability_shift }}</label>
+                <label class="col-sm-2 col-form-label">{{ entry_liability_shift }}</label>
                 <div class="col-sm-10">
-                  <select name="payment_globalpay_remote_liability" id="input-liability" class="form-control">
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     {% if payment_globalpay_remote_liability %}
-                      <option value="1" selected="selected">{{ text_yes }}</option>
-                      <option value="0">{{ text_no }}</option>
+                      <label class="btn btn-success active"><input type="radio" name="payment_globalpay_remote_liability" value="1" checked="checked"/> {{ text_yes }}</label>
+                      <label class="btn btn-danger"><input type="radio" name="payment_globalpay_remote_liability" value="0"/> {{ text_no }}</label>
                     {% else %}
-                      <option value="1">{{ text_yes }}</option>
-                      <option value="0" selected="selected">{{ text_no }}</option>
+                      <label class="btn btn-success"><input type="radio" name="payment_globalpay_remote_liability" value="1"/> {{ text_yes }}</label>
+                      <label class="btn btn-danger active"><input type="radio" name="payment_globalpay_remote_liability" value="0" checked="checked"/> {{ text_no }}</label>
                     {% endif %}
-                  </select>
+                  </div>
                   <small class="form-text text-muted">{{ help_liability }}</small>
                 </div>
               </div>
