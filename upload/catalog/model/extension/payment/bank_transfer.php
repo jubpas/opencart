@@ -20,7 +20,7 @@ class ModelExtensionPaymentBankTransfer extends Model {
 		if ($status) {
 			$method_data = array(
 				'code'       => 'bank_transfer',
-				'title'      => $this->language->get('text_title'),
+				'title'      => '<img src= "' . $this->config->get('config_url') . 'image/data/payment/bank_transfer.png" /> ' . $this->language->get('text_title'),
 				'terms'      => '',
 				'sort_order' => $this->config->get('payment_bank_transfer_sort_order')
 			);

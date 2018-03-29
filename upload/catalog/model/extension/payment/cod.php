@@ -22,7 +22,7 @@ class ModelExtensionPaymentCOD extends Model {
 		if ($status) {
 			$method_data = array(
 				'code'       => 'cod',
-				'title'      => $this->language->get('text_title'),
+				'title'      =>'<img src= "' . $this->config->get('config_url') . 'image/data/payment/cod.png" /> ' . $this->language->get('text_title'),
 				'terms'      => '',
 				'sort_order' => $this->config->get('payment_cod_sort_order')
 			);
