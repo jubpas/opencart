@@ -49,10 +49,7 @@ class ControllerCommonLanguage extends Controller {
 			$code = $this->config->get('config_language');
 		}
 
-		$redirect = isset($this->request->get['redirect']);
-
-
-		if ( && substr) {
+		if (isset($this->request->get['redirect'])) {
 			$redirect = htmlspecialchars_decode($this->request->get['redirect'], ENT_COMPAT, 'UTF-8');
 		} else {
 			$redirect = '';

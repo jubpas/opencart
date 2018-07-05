@@ -16,7 +16,8 @@
     {% else %}
       {% set class = 'col-sm-12' %}
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
+    <div id="content" class="{{ class }}">
+      {{ content_top }}
       <h1>{{ heading_title }}</h1>
       <p>{{ text_account_already }}</p>
       <form action="{{ action }}" method="post" enctype="multipart/form-data">
@@ -313,7 +314,7 @@ $('#account .form-group[data-sort]').detach().each(function() {
 
 $('input[name=\'customer_group_id\']').on('change', function() {
 	$.ajax({
-		url: 'index.php?route=account/register/customfield&language={{ language }}&customer_group_id=' + this.value,
+		url: 'index.php?route=account/register/customfield&customer_group_id=' + this.value,
 		dataType: 'json',
 		success: function(json) {
 			$('.custom-field').hide();
@@ -356,7 +357,7 @@ $('button[id^=\'button-custom-field\']').on('click', function() {
 			clearInterval(timer);
 
 			$.ajax({
-				url: 'index.php?route=tool/upload&language={{ language }}',
+				url: 'index.php?route=tool/upload',
 				type: 'post',
 				dataType: 'json',
 				data: new FormData($('#form-upload')[0]),
